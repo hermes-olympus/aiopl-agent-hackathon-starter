@@ -1,6 +1,11 @@
 from __future__ import annotations
 
+import os
 from dataclasses import dataclass
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 @dataclass
@@ -32,8 +37,38 @@ Return a concise, structured answer.
 
 
 def baseline_agent(example: TaskExample) -> AgentPrediction:
-    """Replace this with a real model call during the hackathon."""
+    """Baseline agent.
+
+    If AIO_MODEL is set and the matching API key exists, this calls a real
+    model through LiteLLM. Otherwise it returns a placeholder so the harness can
+    still be tested without spending money.
+    """
     prompt = build_prompt(example)
+    model = os.getenv("AIO_MODEL", "").strip()
+    if model:
+        try:
+            from litellm import completion
+
+            response = completion(
+                model=model,
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0,
+            )
+            answer = response.choices[0].message.content or ""
+            return AgentPrediction(
+                example_id=example.example_id,
+                answer=answer,
+                rationale=f"Model call through LiteLLM using {model}.",
+                version=f"baseline-{model}",
+            )
+        except Exception as exc:
+            return AgentPrediction(
+                example_id=example.example_id,
+                answer=f"MODEL_CALL_FAILED: {exc}",
+                rationale="Model call failed. Check .env, provider key, and model name.",
+                version=f"baseline-{model}-failed",
+            )
+
     return AgentPrediction(
         example_id=example.example_id,
         answer=prompt,
@@ -54,4 +89,3 @@ def score_prediction(example: TaskExample, prediction: AgentPrediction) -> dict:
         "exact_match": exact_match,
         "has_answer": bool(prediction.answer.strip()),
     }
-

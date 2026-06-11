@@ -21,9 +21,14 @@ The core idea: build the evaluation harness before making the agent fancy.
 ├── data/sample.csv
 ├── docs/
 │   ├── agent_optimization_playbook.md
+│   ├── api_keys_first_time.md
 │   ├── eval_harness_notes.md
+│   ├── first_hackathon_guide.md
+│   ├── harness_tutorial.md
+│   ├── how_to_use_ai_assistants.md
 │   ├── laptop_readiness.md
 │   ├── prompt_patterns.md
+│   ├── questions_for_organizers.md
 │   └── study_material.md
 ├── src/aio_agent_harness/
 │   ├── cli.py
@@ -39,6 +44,21 @@ cp .env.example .env
 ```
 
 Add API keys to `.env` if needed.
+
+If you do not set `AIO_MODEL`, the harness runs in no-spend placeholder mode.
+That is useful for testing the flow.
+
+When you are ready to call a real model, set one provider key and `AIO_MODEL` in
+`.env`.
+
+Example:
+
+```bash
+OPENAI_API_KEY=sk-...
+AIO_MODEL=openai/your-model-name
+```
+
+Check current model names in the provider dashboard/docs before the hackathon.
 
 ## Expected Flow
 
@@ -71,3 +91,14 @@ demands it.
 
 Do not spend the first half of the hackathon building a complex UI or a
 multi-agent architecture unless the task clearly needs it.
+
+## First-Time Hackathon Reading Order
+
+1. `docs/first_hackathon_guide.md`
+2. `docs/api_keys_first_time.md`
+3. `docs/harness_tutorial.md`
+4. `docs/agent_optimization_playbook.md`
+5. `docs/eval_harness_notes.md`
+6. `docs/prompt_patterns.md`
+7. `docs/questions_for_organizers.md`
+8. `docs/how_to_use_ai_assistants.md`
