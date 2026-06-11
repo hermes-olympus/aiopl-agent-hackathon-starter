@@ -1,0 +1,4 @@
+id,input,expected
+1,"A customer says their invoice was charged twice and asks for urgent help.","billing_escalation"
+2,"A sales lead asks for pricing, implementation time, and security details.","sales_followup"
+

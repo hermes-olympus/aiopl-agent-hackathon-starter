@@ -1,0 +1,19 @@
+[project]
+name = "aio-agent-harness"
+version = "0.1.0"
+description = "Small eval-first agent harness for hackathons"
+requires-python = ">=3.11"
+dependencies = [
+    "pandas>=2.0.0",
+    "pydantic>=2.0.0",
+    "python-dotenv>=1.0.0",
+    "rich>=13.0.0",
+    "typer>=0.12.0",
+]
+
+[project.scripts]
+aio-harness = "aio_agent_harness.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
