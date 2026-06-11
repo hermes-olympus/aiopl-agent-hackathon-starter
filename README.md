@@ -22,6 +22,7 @@ The core idea: build the evaluation harness before making the agent fancy.
 ├── docs/
 │   ├── agent_optimization_playbook.md
 │   ├── api_keys_first_time.md
+│   ├── cost_budgeting.md
 │   ├── eval_harness_notes.md
 │   ├── first_hackathon_guide.md
 │   ├── harness_tutorial.md
@@ -96,9 +97,10 @@ multi-agent architecture unless the task clearly needs it.
 
 1. `docs/first_hackathon_guide.md`
 2. `docs/api_keys_first_time.md`
-3. `docs/harness_tutorial.md`
-4. `docs/agent_optimization_playbook.md`
-5. `docs/eval_harness_notes.md`
-6. `docs/prompt_patterns.md`
-7. `docs/questions_for_organizers.md`
-8. `docs/how_to_use_ai_assistants.md`
+3. `docs/cost_budgeting.md`
+4. `docs/harness_tutorial.md`
+5. `docs/agent_optimization_playbook.md`
+6. `docs/eval_harness_notes.md`
+7. `docs/prompt_patterns.md`
+8. `docs/questions_for_organizers.md`
+9. `docs/how_to_use_ai_assistants.md`
