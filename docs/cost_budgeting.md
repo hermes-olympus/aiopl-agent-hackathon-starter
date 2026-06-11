@@ -128,3 +128,49 @@ If using GPT-5.4 mini:
 
 That should be enough for a serious hackathon workflow.
 
+## Better Two-Model Strategy
+
+Use GPT-5.4 nano for cheap checking and GPT-5.4 mini for final quality.
+
+Recommended flow:
+
+1. Placeholder mode: test code without API spend.
+2. GPT-5.4 nano: first API tests, prompt debugging, schema checks, small evals.
+3. GPT-5.4 nano: repeated 20-50 row optimization loops.
+4. GPT-5.4 mini: compare best 1-2 approaches on a larger sample.
+5. GPT-5.4 mini: final eval run after the prompt/harness is stable.
+
+This is better than using mini for everything.
+
+## Nano vs Mini
+
+Use nano for:
+
+- cheap smoke tests
+- classification
+- extraction
+- JSON formatting checks
+- failure analysis drafts
+- prompt iteration
+- running many rows
+
+Use mini for:
+
+- final eval
+- harder reasoning examples
+- domain-sensitive output
+- final demo examples
+- cases where nano fails consistently
+
+Do not use the expensive model until you know exactly what you are asking it to
+do.
+
+## Example Budget Split
+
+For a 5 USD budget:
+
+- 1 USD on nano for experiments
+- 3 USD on mini for final comparisons/runs
+- 1 USD reserve for debugging and emergency reruns
+
+If nano performs well enough, spend even less on mini.
